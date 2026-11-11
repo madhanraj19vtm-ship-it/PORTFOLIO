@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madhanraj V • Portfolio | Computer Science (AI & ML) Student</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            handwriting: ['Caveat', 'cursive'],
+          },
+          colors: {
+            cyberDark: '#08080a',
+            cyberCard: '#0f0f13',
+            cyberBorder: 'rgba(255, 255, 255, 0.08)',
+            cyberBlue: '#1e40af',
+            cyberLightBlue: '#3b82f6',
+          },
+          animation: {
+            'marquee': 'marquee 25s linear infinite',
+            'float': 'float 4s ease-in-out infinite',
+            'glow-pulse': 'glowPulse 3s infinite alternate',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glowPulse: {
+              '0%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(59, 130, 246, 0.3))' },
+              '100%': { opacity: '0.8', filter: 'drop-shadow(0 0 35px rgba(59, 130, 246, 0.7))' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08080a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #22222b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3b82f6;
+    }
+
+    /* 3D Perspective for Lanyard Badge */
+    .perspective-1000 {
+      perspective: 1200px;
+    }
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+
+    /* Lanyard Ribbon Pattern */
+    .lanyard-strap {
+      background: repeating-linear-gradient(
+        0deg,
+        #111116,
+        #111116 28px,
+        #1c1c24 28px,
+        #1c1c24 30px
+      );
+      box-shadow: inset 0 0 12px rgba(0,0,0,0.8), 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Glowing Badge & Accents */
+    .glow-title {
+      text-shadow: 0 0 35px rgba(255, 255, 255, 0.45);
+    }
+    .glow-card:hover {
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.15);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    /* Background noise/mesh pattern */
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      #splashScreen, header, footer, #backToTopBtn, #toggleLanyardBtn, #contact, .animate-marquee {
+        display: none !important;
+      }
+      #aboutModal {
+        display: block !important;
+        opacity: 1 !important;
+        background: white !important;
+        color: black !important;
+        position: static !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-[#08080a] text-zinc-100 font-sans selection:bg-blue-600 selection:text-white overflow-x-hidden antialiased relative">
+
+  <!-- ============================================================== -->
+  <!-- 1. INTRO SPLASH SCREEN OVERLAY                                  -->
+  <!-- ============================================================== -->
+  <div id="splashScreen" class="fixed inset-0 z-50 bg-[#08080a] flex flex-col items-center justify-center p-4 transition-all duration-500 ease-in-out cursor-pointer" onclick="dismissSplash()">
+    <div class="relative z-10 flex flex-col items-center max-w-lg text-center pointer-events-auto">
+      <!-- Top 3 Floating Icon Pills -->
+      <div class="flex items-center gap-3 mb-8">
+        <div class="w-12 h-12 rounded-full bg-zinc-900/90 border border-zinc-700/60 flex items-center justify-center text-zinc-300 hover:text-white hover:border-zinc-500 transition-all shadow-lg hover:scale-110">
+          <i class="fa-solid fa-code text-sm"></i>
+        </div>
+        <div class="w-12 h-12 rounded-full bg-zinc-900/90 border border-zinc-700/60 flex items-center justify-center text-zinc-300 hover:text-white hover:border-zinc-500 transition-all shadow-lg hover:scale-110">
+          <i class="fa-solid fa-brain text-sm"></i>
+        </div>
+        <div class="w-12 h-12 rounded-full bg-zinc-900/90 border border-zinc-700/60 flex items-center justify-center text-zinc-300 hover:text-white hover:border-zinc-500 transition-all shadow-lg hover:scale-110">
+          <i class="fa-solid fa-graduation-cap text-sm"></i>
+        </div>
+      </div>
+
+      <!-- Main Splash Headline -->
+      <h1 class="text-3xl md:text-5xl font-bold font-syne tracking-tight text-white mb-3">
+        MADHANRAJ V<br><span class="text-blue-500">Portfolio &amp; Resume</span>
+      </h1>
+      <p class="text-zinc-400 text-sm md:text-base font-normal tracking-wide mb-8">
+        Computer Science (AI &amp; ML) • Jain University
+      </p>
+
+      <!-- URL Pill Button to Enter -->
+      <button id="enterSiteBtn" type="button" onclick="dismissSplash(event)" class="group relative px-7 py-3 rounded-full bg-zinc-950/90 border border-zinc-800 hover:border-zinc-500 text-zinc-300 hover:text-white transition-all duration-300 shadow-2xl flex items-center gap-3 cursor-pointer">
+        <span class="w-2 h-2 rounded-full bg-blue-500 group-hover:animate-ping"></span>
+        <span class="font-mono text-xs md:text-sm tracking-wider">ENTER PORTFOLIO</span>
+        <i class="fa-solid fa-arrow-right text-xs opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+      </button>
+
+      <span class="text-[11px] font-mono text-zinc-500 mt-4">Click anywhere to skip</span>
+
+      <!-- Bottom subtle line divider -->
+      <div class="w-28 h-[1px] bg-gradient-to-r from-transparent via-zinc-700 to-transparent mt-8"></div>
+    </div>
+
+    <!-- Soft radial glow behind splash -->
+    <div class="absolute w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[130px] pointer-events-none"></div>
+  </div>
+
+  <script>
+    function dismissSplash(e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      const splash = document.getElementById('splashScreen');
+      if (!splash || splash.style.display === 'none') return;
+      splash.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      splash.style.opacity = '0';
+      splash.style.pointerEvents = 'none';
+      splash.style.transform = 'translateY(-16px)';
+      setTimeout(function() {
+        splash.style.display = 'none';
+      }, 450);
+    }
+    window.dismissSplash = dismissSplash;
+  </script>
+
+  <!-- Background Grid Texture -->
+  <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+
+  <!-- ============================================================== -->
+  <!-- 2. FIXED GLASSMORPHISM NAVBAR                                  -->
+  <!-- ============================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#08080a]/85 backdrop-blur-md border-b border-zinc-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-700 flex items-center justify-center font-bold font-syne text-sm text-white group-hover:border-blue-500 group-hover:text-blue-400 transition-all">
+          M
+        </div>
+        <span class="font-bold tracking-wider text-xs md:text-sm font-syne uppercase text-zinc-200">
+          MADHANRAJ <span class="text-zinc-500">•</span> CS (AI &amp; ML)
+        </span>
+      </a>
+
+      <!-- Navigation Links (Centered) -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest text-zinc-400">
+        <a href="#hero" id="nav-hero" class="nav-item hover:text-white transition-colors relative py-1 text-white">
+          HOME
+        </a>
+        <button onclick="toggleAboutModal(true)" class="nav-item hover:text-white transition-colors relative py-1">
+          PROFILE
+        </button>
+        <a href="#showcase" id="nav-showcase" class="nav-item hover:text-white transition-colors relative py-1">
+          SHOWCASE
+        </a>
+        <a href="#contact" id="nav-contact" class="nav-item hover:text-white transition-colors relative py-1">
+          CONTACT
+        </a>
+      </nav>
+
+      <!-- Right Side: Real-Time Digital Clock -->
+      <div class="flex items-center gap-3">
+        <div class="px-3 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800 text-zinc-300 font-mono text-xs tracking-wider flex items-center gap-2 shadow-inner">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="liveClock">12:12 PM</span>
+        </div>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileNavToggle" aria-label="Toggle menu" class="md:hidden p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileNavDrawer" class="hidden md:hidden px-6 py-4 bg-zinc-950/98 border-b border-zinc-800 flex flex-col gap-4 text-xs font-semibold tracking-wider">
+      <a href="#hero" onclick="toggleMobileNav()" class="text-zinc-300 hover:text-white py-1">HOME</a>
+      <button onclick="toggleAboutModal(true); toggleMobileNav();" class="text-left text-zinc-300 hover:text-white py-1">PROFILE</button>
+      <a href="#showcase" onclick="toggleMobileNav()" class="text-zinc-300 hover:text-white py-1">SHOWCASE</a>
+      <a href="#contact" onclick="toggleMobileNav()" class="text-zinc-300 hover:text-white py-1">CONTACT</a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrap -->
+  <main class="relative z-10 pt-16">
+
+    <!-- ============================================================== -->
+    <!-- 3. HERO SECTION (EDITORIAL BRUTALIST & HIGHLIGHT)               -->
+    <!-- ============================================================== -->
+    <section id="hero" class="min-h-[calc(100vh-4rem)] flex flex-col justify-between px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto relative">
+      
+      <!-- Top Section: Full Name Typography "MADHANRAJ" with royal blue accent block -->
+      <div class="relative w-full mt-4 md:mt-6 select-none">
+        <div class="relative inline-block w-full">
+          <!-- Royal Blue Accent Box behind "RAJ" -->
+          <div class="absolute right-0 top-1/2 -translate-y-1/2 w-32 sm:w-48 md:w-64 lg:w-72 h-16 sm:h-24 md:h-32 lg:h-36 bg-cyberBlue -z-10 rounded-sm shadow-2xl opacity-90"></div>
+          
+          <h1 class="font-extrabold font-syne tracking-tight text-white leading-none whitespace-nowrap" style="font-size: clamp(2.8rem, 8.5vw, 7.5rem);">
+            MADHANRAJ
+          </h1>
+        </div>
+      </div>
+
+      <!-- Main Hero Body Grid (Directly Under Name: Left Texts & Right Photo under RAJ) -->
+      <div class="relative z-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end my-auto py-6">
+        
+        <!-- Left Column: Editorial Headline, Description & Actions (7 Cols) -->
+        <div class="lg:col-span-7 flex flex-col items-start justify-center z-20">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold font-syne text-zinc-100 leading-[1.15] tracking-tight mb-6">
+            Building Software That Solves Problems.
+          </h2>
+
+          <p class="text-zinc-400 text-sm sm:text-base max-w-xl leading-relaxed font-light mb-8">
+            Computer Science (AI &amp; ML) student at Jain University (<span class="text-blue-400 font-semibold font-mono">CGPA: 7.45</span>). Passionate about building intelligent software like the <strong>Students Depression Calculator</strong> and scalable object-oriented systems.
+          </p>
+
+          <!-- Action Pill Buttons -->
+          <div class="flex items-center gap-3">
+            <a href="#showcase" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-zinc-900 border border-zinc-700/80 text-zinc-200 hover:text-white hover:border-zinc-400 transition-all text-xs font-mono tracking-wider shadow-lg group">
+              <span>EXPLORE WORK</span>
+              <i class="fa-solid fa-arrow-down text-[10px] group-hover:translate-y-0.5 transition-transform"></i>
+            </a>
+            <button onclick="toggleAboutModal(true)" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white transition-all text-xs font-mono tracking-wider shadow-lg cursor-pointer">
+              <span>RESUME</span>
+              <i class="fa-solid fa-file-lines text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Madhanraj Photo Cleanly Aligned Under RAJ (5 Cols) -->
+        <div class="lg:col-span-5 flex items-end justify-center lg:justify-end select-none relative z-10 pointer-events-none pt-4">
+          <div class="relative w-56 sm:w-64 md:w-72 lg:w-80 xl:w-[340px] flex flex-col items-center">
+            <!-- Cyber Blue Glow behind cutout portrait -->
+            <div class="absolute -inset-4 bg-gradient-to-t from-blue-600/20 via-indigo-600/10 to-transparent rounded-full blur-2xl -z-10"></div>
+            
+            <img 
+              src="madhanraj-hero.png" 
+              alt="Madhanraj V" 
+              class="w-full h-auto max-h-[320px] sm:max-h-[360px] md:max-h-[400px] lg:max-h-[430px] object-contain object-bottom drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] opacity-95"
+            />
+
+            <!-- Gradient mask to blend bottom seamlessly into dark background -->
+            <div class="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#08080a] to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Meta Status Divider Line -->
+      <div class="w-full pt-4 border-t border-zinc-900/80 flex items-center justify-between text-[11px] font-mono text-zinc-500">
+        <span class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>B.Tech AI &amp; ML • 2025–2029</span>
+        </span>
+        <span class="hidden sm:inline-block">Bengaluru, Karnataka, India</span>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 4. INFINITE MARQUEE TICKER                                      -->
+    <!-- ============================================================== -->
+    <div class="w-full bg-[#0d0d12] border-y border-zinc-800/70 py-3.5 overflow-hidden select-none">
+      <div class="flex whitespace-nowrap animate-marquee">
+        <!-- Sequence Repeated for Continuous Scrolling Loop -->
+        <div class="flex items-center gap-8 text-xs font-bold font-syne tracking-[0.25em] text-zinc-400 uppercase">
+          <span>• STUDENTS DEPRESSION CALCULATOR</span>
+          <span class="text-emerald-400">• CGPA: 7.45</span>
+          <span>• JAVA (OOP)</span>
+          <span>• PYTHON</span>
+          <span class="text-white">• MADHANRAJ V</span>
+          <span class="text-blue-400">• CS (AI &amp; ML)</span>
+          <span>• JAIN UNIVERSITY</span>
+          <span>• DATA STRUCTURES</span>
+          <span>• ALGORITHMS</span>
+          <span class="text-blue-400">• PROBLEM SOLVING</span>
+          <span>• GIT &amp; GITHUB</span>
+        </div>
+        <div class="flex items-center gap-8 text-xs font-bold font-syne tracking-[0.25em] text-zinc-400 uppercase">
+          <span>• STUDENTS DEPRESSION CALCULATOR</span>
+          <span class="text-emerald-400">• CGPA: 7.45</span>
+          <span>• JAVA (OOP)</span>
+          <span>• PYTHON</span>
+          <span class="text-white">• MADHANRAJ V</span>
+          <span class="text-blue-400">• CS (AI &amp; ML)</span>
+          <span>• JAIN UNIVERSITY</span>
+          <span>• DATA STRUCTURES</span>
+          <span>• ALGORITHMS</span>
+          <span class="text-blue-400">• PROBLEM SOLVING</span>
+          <span>• GIT &amp; GITHUB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 5. ROLE SECTION & INTERACTIVE LANYARD ID CARD                   -->
+    <!-- ============================================================== -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-visible">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Role Details & Actions (7 Cols) -->
+        <div class="lg:col-span-7 flex flex-col items-start">
+          
+          <!-- Availability Tag -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] font-mono tracking-widest text-zinc-300 uppercase mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>AVAILABLE FOR OPPORTUNITIES |</span>
+          </div>
+
+          <!-- Main Role Heading -->
+          <h2 class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-syne tracking-tight text-white mb-6">
+            Software &amp;<br>AI/ML Student
+          </h2>
+
+          <!-- Bio Description -->
+          <p class="text-zinc-400 text-base md:text-lg max-w-xl leading-relaxed mb-8">
+            Comfortable working with Java and Python, with a growing understanding of object-oriented concepts, algorithms, and practical programming logic. Focused on writing modular, cleaner, and more resilient code.
+          </p>
+
+          <!-- Tech Pill Badges -->
+          <div class="flex flex-wrap gap-2.5 mb-10">
+            <span class="px-4 py-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-xs font-medium text-zinc-300 shadow-sm hover:border-zinc-600 transition-all">Java (OOP)</span>
+            <span class="px-4 py-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-xs font-medium text-zinc-300 shadow-sm hover:border-zinc-600 transition-all">Python</span>
+            <span class="px-4 py-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-xs font-medium text-zinc-300 shadow-sm hover:border-zinc-600 transition-all">Data Structures &amp; Algorithms</span>
+            <span class="px-4 py-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-xs font-medium text-zinc-300 shadow-sm hover:border-zinc-600 transition-all">Problem Solving</span>
+            <span class="px-4 py-2 rounded-xl bg-zinc-900/90 border border-zinc-800 text-xs font-medium text-zinc-300 shadow-sm hover:border-zinc-600 transition-all">Git &amp; GitHub</span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4">
+            <button id="toggleLanyardBtn" class="px-7 py-3 rounded-full bg-zinc-900 border border-zinc-700 hover:border-zinc-400 text-xs font-bold tracking-wider uppercase text-white shadow-xl transition-all duration-300 active:scale-95 flex items-center gap-2">
+              <i class="fa-solid fa-id-badge text-blue-400"></i>
+              <span id="cardBtnText">HIDE ID PASS</span>
+            </button>
+
+            <button onclick="toggleAboutModal(true)" class="px-7 py-3 rounded-full bg-zinc-100 text-zinc-900 hover:bg-white text-xs font-bold tracking-wider uppercase shadow-xl transition-all duration-300 active:scale-95">
+              VIEW PROFILE
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: 3D Interactive Lanyard & Hanging ID Badge (5 Cols) -->
+        <div id="lanyardWrapper" class="lg:col-span-5 relative flex flex-col items-center justify-start min-h-[500px] perspective-1000 select-none">
+          
+          <!-- Lanyard Assembly (Visible by default) -->
+          <div id="lanyardContainer" class="relative flex flex-col items-center transition-all duration-700 ease-out transform translate-y-0 opacity-100 pointer-events-auto scale-100 origin-top">
+            
+            <!-- Unified Hanging Pendulum Rig (Pivots at Top Anchor) -->
+            <div id="lanyardAssembly" class="flex flex-col items-center origin-top will-change-transform">
+              
+              <!-- Hanging Ribbon Straps -->
+              <div id="lanyardStraps" class="flex items-center justify-center -space-x-1 mb-0 relative z-20 origin-top">
+                <!-- Left Strap -->
+                <div class="w-8 h-44 lanyard-strap flex flex-col items-center justify-around py-2 border-x border-zinc-700/50 shadow-2xl transform -rotate-1 origin-top">
+                  <span class="text-[9px] font-mono font-black text-zinc-400/80 -rotate-90 whitespace-nowrap tracking-widest">MADHANRAJ</span>
+                  <span class="text-[9px] font-mono font-black text-zinc-400/80 -rotate-90 whitespace-nowrap tracking-widest">JAIN UNIV</span>
+                </div>
+                <!-- Right Strap -->
+                <div class="w-8 h-44 lanyard-strap flex flex-col items-center justify-around py-2 border-x border-zinc-700/50 shadow-2xl transform rotate-1 origin-top">
+                  <span class="text-[9px] font-mono font-black text-zinc-400/80 -rotate-90 whitespace-nowrap tracking-widest">MADHANRAJ</span>
+                  <span class="text-[9px] font-mono font-black text-zinc-400/80 -rotate-90 whitespace-nowrap tracking-widest">CSE AI &amp; ML</span>
+                </div>
+              </div>
+
+              <!-- Metallic Clip / Carabiner Ring -->
+              <div id="lanyardClip" class="relative z-30 flex flex-col items-center -mt-2 origin-top">
+                <div class="w-6 h-5 rounded-md bg-gradient-to-b from-zinc-300 via-zinc-400 to-zinc-600 shadow-md border border-zinc-200/50 flex items-center justify-center">
+                  <div class="w-2 h-2 rounded-full bg-zinc-700"></div>
+                </div>
+                <div class="w-4 h-6 border-2 border-zinc-300 rounded-b-full bg-transparent -mt-1 shadow-inner"></div>
+              </div>
+
+              <!-- The Hanging ID Badge Card with Reactive Pendulum Pivot -->
+              <div class="relative z-30 mt-1 cursor-grab active:cursor-grabbing select-none group origin-top preserve-3d will-change-transform" id="lanyardCard" onclick="flipLanyardCard()" title="Click to Flip Card • Move mouse or drag to swing badge">
+                
+                <!-- Card 3D Inner Wrapper -->
+                <div id="lanyardCardInner" class="w-64 h-96 relative preserve-3d shadow-2xl rounded-2xl transition-transform duration-100">
+                  
+                  <!-- FRONT OF THE BADGE -->
+                  <div class="absolute inset-0 backface-hidden bg-white text-zinc-900 rounded-2xl p-5 border border-zinc-300 flex flex-col justify-between shadow-2xl overflow-hidden">
+                    
+                    <!-- Top Cutout Slot for Clip -->
+                    <div class="flex justify-center -mt-2 mb-3">
+                      <div class="w-12 h-2 rounded-full bg-zinc-300 border border-zinc-400"></div>
+                    </div>
+
+                    <!-- Header / University -->
+                    <div class="flex items-center justify-between border-b border-zinc-200 pb-2">
+                      <span class="font-black font-syne text-xs tracking-wider text-blue-900">JAIN UNIVERSITY</span>
+                      <span class="text-[10px] font-mono font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">CGPA: 7.45</span>
+                    </div>
+
+                    <!-- ID Portrait Area / Avatar with User Photo -->
+                    <div class="my-auto flex flex-col items-center">
+                      <div class="w-36 h-44 rounded-xl overflow-hidden border-2 border-blue-900/40 shadow-md bg-slate-950 relative flex flex-col items-center justify-center group/photo">
+                        <img src="profile.jpg" alt="Madhanraj V" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover/photo:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-1.5 px-2 py-0.5 rounded bg-blue-950/90 border border-blue-500/40 text-[8px] font-mono font-bold text-blue-300 tracking-wider">
+                          CSE (AI &amp; ML)
+                        </div>
+                      </div>
+
+                      <!-- Script / Handwritten Name -->
+                      <div class="mt-2 text-center">
+                        <p class="font-handwriting text-2xl font-bold text-zinc-800 tracking-wide">
+                          Madhanraj V
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Bottom Barcode & Role Tag -->
+                    <div class="pt-2 border-t border-zinc-200 flex items-center justify-between">
+                      <div class="flex flex-col">
+                        <span class="text-[9px] font-bold text-zinc-400 uppercase tracking-widest">ROLE</span>
+                        <span class="text-xs font-bold text-zinc-900">AI &amp; ML STUDENT</span>
+                      </div>
+                      <!-- Barcode graphic representation -->
+                      <div class="flex items-center gap-[2px] h-6">
+                        <span class="w-[2px] h-full bg-zinc-800"></span>
+                        <span class="w-[1px] h-full bg-zinc-800"></span>
+                        <span class="w-[3px] h-full bg-zinc-800"></span>
+                        <span class="w-[1px] h-full bg-zinc-800"></span>
+                        <span class="w-[2px] h-full bg-zinc-800"></span>
+                        <span class="w-[4px] h-full bg-zinc-800"></span>
+                        <span class="w-[1px] h-full bg-zinc-800"></span>
+                        <span class="w-[2px] h-full bg-zinc-800"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- BACK OF THE BADGE -->
+                <div class="absolute inset-0 backface-hidden rotate-y-180 bg-zinc-900 text-white rounded-2xl p-5 border border-zinc-700 flex flex-col justify-between shadow-2xl overflow-hidden">
+                  
+                  <!-- Top Cutout Slot -->
+                  <div class="flex justify-center -mt-2 mb-2">
+                    <div class="w-12 h-2 rounded-full bg-zinc-800 border border-zinc-700"></div>
+                  </div>
+
+                  <div class="text-center">
+                    <span class="text-[10px] font-mono tracking-widest text-zinc-400 uppercase">STUDENT CREDENTIAL</span>
+                    <h4 class="font-syne font-black text-sm tracking-widest text-blue-400">B.TECH (2025–2029)</h4>
+                  </div>
+
+                  <!-- Details Section -->
+                  <div class="relative flex flex-col items-center justify-center my-auto space-y-2 text-center">
+                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 p-0.5 shadow-xl">
+                      <div class="w-full h-full bg-zinc-950 rounded-[14px] flex flex-col items-center justify-center p-2">
+                        <i class="fa-solid fa-code text-2xl text-blue-300 mb-1"></i>
+                        <span class="text-[8px] font-mono font-bold text-zinc-300">JAVA • PYTHON</span>
+                      </div>
+                    </div>
+
+                    <p class="text-[11px] text-zinc-300 font-mono">
+                      Bengaluru, Karnataka, India
+                    </p>
+
+                    <!-- Authenticated Seal & CGPA -->
+                    <div class="px-3 py-1 rounded-full bg-gradient-to-r from-emerald-400/20 via-teal-400/20 to-blue-400/20 border border-emerald-400/40 text-[10px] font-mono text-emerald-300 flex items-center gap-1.5 shadow-sm">
+                      <i class="fa-solid fa-award text-emerald-400"></i>
+                      <span>CGPA: 7.45 / 10</span>
+                    </div>
+                  </div>
+
+                  <!-- Contact & QR -->
+                  <div class="pt-2 border-t border-zinc-800 flex items-center justify-between">
+                    <div class="text-left">
+                      <span class="text-[9px] font-mono text-zinc-500 block">SCAN TO CONNECT</span>
+                      <span class="text-[10px] font-bold text-zinc-300 font-mono">+91 99421 55468</span>
+                    </div>
+                    <!-- Stylized QR Code Icon -->
+                    <div class="w-10 h-10 bg-white p-1 rounded-md shadow flex items-center justify-center">
+                      <i class="fa-solid fa-qrcode text-zinc-950 text-2xl"></i>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              
+              <!-- Helper Pill -->
+              <div class="text-center mt-3">
+                <button type="button" class="text-[11px] font-mono text-zinc-400 hover:text-white tracking-wider inline-flex items-center justify-center gap-1.5 cursor-pointer">
+                  <i class="fa-solid fa-rotate text-xs"></i> Click badge to flip • Drag to swing
+                </button>
+              </div>
+            </div>
+
+          </div>
+          <!-- End of lanyardAssembly -->
+        </div>
+
+        <!-- Placeholder illustration when badge is tucked away -->
+        <div id="lanyardPlaceholder" onclick="triggerShowLanyard()" class="hidden text-center py-20 px-6 rounded-2xl border border-dashed border-zinc-800/80 bg-zinc-950/40 max-w-sm cursor-pointer hover:border-zinc-600 transition-all group">
+            <div class="w-16 h-16 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center mx-auto mb-4 text-blue-400 text-2xl group-hover:scale-110 transition-transform animate-bounce">
+              <i class="fa-solid fa-id-card"></i>
+            </div>
+            <h3 class="font-syne font-bold text-zinc-200 text-lg mb-1">Student Pass</h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">
+              Click <span class="text-blue-400 font-medium">"SHOW ID PASS"</span> (or click here) to drop down Madhanraj's dynamic 3D lanyard credential card.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 6. SHOWCASE SECTION (PROJECTS, EDUCATION, TECH STACK, VIDEO)    -->
+    <!-- ============================================================== -->
+    <section id="showcase" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-900">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-[11px] font-mono tracking-[0.3em] uppercase text-zinc-400 bg-zinc-900 border border-zinc-800 px-4 py-1.5 rounded-full inline-block mb-4">
+          SHOWCASE
+        </span>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold font-syne text-white tracking-tight glow-title">
+          Portfolio &amp; Skills
+        </h2>
+      </div>
+
+      <!-- Segmented Tab Controls (Projects, Education, Tech Stack) -->
+      <div class="flex justify-center mb-16">
+        <div class="inline-flex p-1.5 rounded-full bg-zinc-950 border border-zinc-800 shadow-2xl flex-wrap justify-center gap-1">
+          <button onclick="switchTab('projects')" id="tab-btn-projects" class="showcase-tab px-6 sm:px-8 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition-all duration-300 text-zinc-400 hover:text-white">
+            Projects
+          </button>
+          <button onclick="switchTab('education')" id="tab-btn-education" class="showcase-tab px-6 sm:px-8 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition-all duration-300 text-zinc-400 hover:text-white">
+            Education
+          </button>
+          <button onclick="switchTab('techstack')" id="tab-btn-techstack" class="showcase-tab px-6 sm:px-8 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wider transition-all duration-300 bg-zinc-100 text-zinc-900 shadow-md">
+            Tech Stack
+          </button>
+        </div>
+      </div>
+
+      <!-- ==================== TAB CONTENT: TECH STACK ==================== -->
+      <div id="content-techstack" class="tab-content transition-all duration-500">
+        <!-- Sub-tagline -->
+        <div class="text-center mb-10">
+          <span class="text-xs font-mono tracking-widest text-zinc-400 uppercase">
+            — CORE TECHNICAL FOCUS —
+          </span>
+        </div>
+
+        <!-- 7 Filtered Technologies Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          
+          <!-- 1. Java (OOP) -->
+          <div class="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 hover:border-red-500/50 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 group glow-card">
+            <i class="fa-brands fa-java text-4xl text-red-500 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-white">JAVA (OOP)</span>
+          </div>
+
+          <!-- 2. Python -->
+          <div class="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 hover:border-yellow-500/50 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 group glow-card">
+            <i class="fa-brands fa-python text-4xl text-yellow-500 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-white">PYTHON</span>
+          </div>
+
+          <!-- 3. Data Structures -->
+          <div class="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 hover:border-blue-400/50 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 group glow-card">
+            <i class="fa-solid fa-sitemap text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-white">DATA STRUCTURES</span>
+          </div>
+
+          <!-- 4. Algorithms -->
+          <div class="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 hover:border-purple-400/50 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 group glow-card">
+            <i class="fa-solid fa-diagram-project text-3xl text-purple-400 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-white">ALGORITHMS</span>
+          </div>
+
+          <!-- 5. OOP Design -->
+          <div class="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 hover:border-cyan-400/50 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 group glow-card">
+            <i class="fa-solid fa-cubes text-3xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-white">OOP DESIGN</span>
+          </div>
+
+          <!-- 6. GitHub -->
+          <div class="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 hover:border-white/50 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 group glow-card">
+            <i class="fa-brands fa-github text-3xl text-white group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-white">GITHUB</span>
+          </div>
+
+          <!-- 7. AI & ML -->
+          <div class="p-6 rounded-2xl bg-zinc-950/80 border border-zinc-800/90 hover:border-indigo-400/50 flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 group glow-card sm:col-span-1 md:col-span-2 lg:col-span-2 flex-grow">
+            <i class="fa-solid fa-brain text-3xl text-indigo-400 group-hover:scale-110 transition-transform"></i>
+            <span class="text-xs font-mono font-bold tracking-wider text-zinc-400 group-hover:text-white">AI &amp; ML</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB CONTENT: PROJECTS ==================== -->
+      <div id="content-projects" class="tab-content hidden transition-all duration-500">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Project Card 1: Students Depression Calculator (FLAGSHIP) -->
+          <div class="rounded-2xl bg-zinc-950 border border-zinc-800/80 hover:border-blue-500/60 transition-all duration-300 group flex flex-col justify-between shadow-2xl relative overflow-hidden glow-card">
+            <div class="absolute top-3 right-3 z-10">
+              <span class="px-2.5 py-1 rounded-full bg-blue-500/20 border border-blue-500/40 text-[10px] font-mono font-bold text-blue-300 uppercase tracking-wider">
+                FEATURED PROJECT
+              </span>
+            </div>
+
+            <div>
+              <div class="h-48 bg-zinc-900 relative overflow-hidden flex items-center justify-center p-4">
+                <div class="w-full h-full rounded-xl bg-gradient-to-br from-blue-950/60 via-zinc-900 to-black border border-zinc-800 flex flex-col items-center justify-center text-center p-4 group-hover:scale-105 transition-transform duration-500">
+                  <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-2">
+                    <i class="fa-solid fa-heart-pulse text-2xl animate-pulse"></i>
+                  </div>
+                  <span class="font-syne font-black text-xl tracking-wider text-white">DEPRESSION CALCULATOR</span>
+                  <span class="text-xs font-mono text-blue-400 mt-1">Student Mental Health &amp; Analytics</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="font-syne font-bold text-lg text-white">Students Depression Calculator</h3>
+                  <span class="text-xs font-mono text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">AI / ML Logic</span>
+                </div>
+                <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                  An analytical assessment tool designed to evaluate student depression and stress indicators by correlating lifestyle habits, academic pressure, sleep duration, and study workload using predictive scoring models.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Python</span>
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Data Analytics</span>
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Scoring Algorithm</span>
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Mental Health Tech</span>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-0 flex items-center justify-between">
+              <button onclick="toggleCalculatorModal(true)" class="text-xs font-mono font-bold text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-xl inline-flex items-center gap-1.5 transition-colors shadow">
+                <i class="fa-solid fa-calculator text-[11px]"></i>
+                <span>Test Live Calculator</span>
+              </button>
+              <a href="#contact" class="text-xs font-mono text-zinc-400 hover:text-white inline-flex items-center gap-1">
+                <span>Details</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Card 2: Course Registration System -->
+          <div class="rounded-2xl bg-zinc-950 border border-zinc-800/80 hover:border-zinc-600 transition-all duration-300 group flex flex-col justify-between">
+            <div>
+              <div class="h-48 bg-zinc-900 relative overflow-hidden flex items-center justify-center p-4">
+                <div class="w-full h-full rounded-xl bg-gradient-to-br from-indigo-950/40 via-zinc-900 to-black border border-zinc-800 flex flex-col items-center justify-center text-center p-4 group-hover:scale-105 transition-transform duration-500">
+                  <i class="fa-solid fa-chalkboard-user text-3xl text-indigo-400 mb-2"></i>
+                  <span class="font-syne font-black text-xl tracking-wider text-white">COURSE REGISTRATION</span>
+                  <span class="text-xs font-mono text-indigo-400 mt-1">Object-Oriented System</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="font-syne font-bold text-lg text-white">Course Registration System</h3>
+                  <span class="text-xs font-mono text-indigo-400 border border-indigo-500/30 px-2 py-0.5 rounded">Java OOP</span>
+                </div>
+                <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                  Structured OOP project modeling students and courses with enrollment logic, inheritance, constructors, and clear validation logic.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Java</span>
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">OOP</span>
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Classes</span>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-0">
+              <a href="#contact" class="text-xs font-mono text-indigo-400 hover:text-indigo-300 inline-flex items-center gap-1.5">
+                <span>Inquire About Source</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Card 3: Algorithmic Thinking & Clean Code Suite -->
+          <div class="rounded-2xl bg-zinc-950 border border-zinc-800/80 hover:border-zinc-600 transition-all duration-300 group flex flex-col justify-between">
+            <div>
+              <div class="h-48 bg-zinc-900 relative overflow-hidden flex items-center justify-center p-4">
+                <div class="w-full h-full rounded-xl bg-gradient-to-br from-teal-950/40 via-zinc-900 to-black border border-zinc-800 flex flex-col items-center justify-center text-center p-4 group-hover:scale-105 transition-transform duration-500">
+                  <i class="fa-solid fa-cubes-stacked text-3xl text-teal-400 mb-2"></i>
+                  <span class="font-syne font-black text-xl tracking-wider text-white">ALGO CHALLENGE SUITE</span>
+                  <span class="text-xs font-mono text-teal-400 mt-1">Arrays, Loops &amp; Strings</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="font-syne font-bold text-lg text-white">Algorithmic Problem Suite</h3>
+                  <span class="text-xs font-mono text-teal-400 border border-teal-500/30 px-2 py-0.5 rounded">DSA &amp; Clean Code</span>
+                </div>
+                <p class="text-zinc-400 text-xs leading-relaxed mb-4">
+                  Collection of algorithmic challenges solving array manipulations, string transformations, and recursive logic with modular methods and exception handling.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Python</span>
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Java</span>
+                  <span class="px-2.5 py-1 rounded-md bg-zinc-900 text-[10px] font-mono text-zinc-300 border border-zinc-800">Algorithms</span>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-0">
+              <a href="#contact" class="text-xs font-mono text-teal-400 hover:text-teal-300 inline-flex items-center gap-1.5">
+                <span>View Methodology</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== TAB CONTENT: EDUCATION ==================== -->
+      <div id="content-education" class="tab-content hidden transition-all duration-500">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          
+          <div class="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-start gap-4 hover:border-zinc-600 transition-all glow-card">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 flex-shrink-0">
+              <i class="fa-solid fa-building-columns text-xl"></i>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <span class="text-[10px] font-mono text-blue-400 uppercase tracking-wider">UNDERGRADUATE (2025–2029)</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono font-bold text-emerald-400">
+                  CGPA: 7.45 / 10
+                </span>
+              </div>
+              <h4 class="font-syne font-bold text-base text-white mt-1">Jain University</h4>
+              <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+                B.Tech in Computer Science &amp; Engineering (Artificial Intelligence &amp; Machine Learning). Focus on core CS foundations, data structures, algorithms, and analytical software design.
+              </p>
+              <div class="mt-3 flex items-center gap-2 text-[11px] font-mono text-zinc-400">
+                <i class="fa-solid fa-location-dot text-blue-400"></i>
+                <span>Bengaluru Campus</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-start gap-4 hover:border-zinc-600 transition-all glow-card">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+              <i class="fa-solid fa-language text-xl"></i>
+            </div>
+            <div class="flex-1">
+              <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider">COMMUNICATION</span>
+              <h4 class="font-syne font-bold text-base text-white mt-1">Language Proficiency</h4>
+              <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+                Fluent in <strong>English</strong> (professional communication &amp; technical documentation) and Native in <strong>Tamil</strong>.
+              </p>
+              <div class="mt-3 flex items-center gap-2 text-[11px] font-mono text-emerald-400">
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Bilingual Communication</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 7. CONTACT SECTION (DIRECT WHATSAPP & EMAIL)                   -->
+    <!-- ============================================================== -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-900">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left: Copy & Direct Contact Info (5 Cols) -->
+        <div class="lg:col-span-5">
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-syne text-white tracking-tight mb-4">
+            Have an internship, project, or collaboration?
+          </h2>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-8">
+            Send me a direct message or email. I'm always open to discussing new software projects, learning opportunities, and technical ideas.
+          </p>
+
+          <!-- Contact Details Badges -->
+          <div class="space-y-3 mb-8 text-xs font-mono text-zinc-300">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-location-dot text-blue-400 w-4"></i>
+              <span>Bengaluru, Karnataka, India</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope text-blue-400 w-4"></i>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhanraj19vtm@gmail.com" target="_blank" rel="noopener noreferrer" class="hover:text-white underline">madhanraj19vtm@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-phone text-blue-400 w-4"></i>
+              <a href="tel:+919942155468" class="hover:text-white">+91 99421 55468</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-brands fa-linkedin text-blue-400 w-4"></i>
+              <a href="https://www.linkedin.com/in/madhanraj-v-589607375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="hover:text-white underline">linkedin.com/in/madhanraj-v</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-brands fa-github text-blue-400 w-4"></i>
+              <a href="https://github.com/madhanraj19vtm-ship-it" target="_blank" rel="noopener noreferrer" class="hover:text-white underline">github.com/madhanraj19vtm-ship-it</a>
+            </div>
+          </div>
+
+          <!-- Direct Circular Action Buttons -->
+          <div class="flex items-center gap-4">
+            <!-- Mail direct button (Opens Gmail Composer) -->
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhanraj19vtm@gmail.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-300 hover:text-white transition-all shadow-lg hover:scale-110" title="Send Email via Gmail">
+              <i class="fa-regular fa-envelope text-lg"></i>
+            </a>
+            <!-- WhatsApp direct button -->
+            <a href="https://wa.me/919942155468" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 hover:border-emerald-500 flex items-center justify-center text-zinc-300 hover:text-emerald-400 transition-all shadow-lg hover:scale-110" title="Chat on WhatsApp">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+            </a>
+            <!-- LinkedIn button (Your Profile) -->
+            <a href="https://www.linkedin.com/in/madhanraj-v-589607375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 hover:border-blue-500 flex items-center justify-center text-zinc-300 hover:text-blue-400 transition-all shadow-lg hover:scale-110" title="View LinkedIn Profile">
+              <i class="fa-brands fa-linkedin text-lg"></i>
+            </a>
+            <!-- GitHub button (Your Profile) -->
+            <a href="https://github.com/madhanraj19vtm-ship-it" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-zinc-900 border border-zinc-800 hover:border-white/60 flex items-center justify-center text-zinc-300 hover:text-white transition-all shadow-lg hover:scale-110" title="View GitHub Profile">
+              <i class="fa-brands fa-github text-xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: "Send Message DIRECT" Box (7 Cols) -->
+        <div class="lg:col-span-7">
+          <div class="rounded-3xl bg-zinc-950/90 border border-zinc-800/80 p-6 sm:p-8 shadow-2xl relative">
+            
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-syne font-bold text-xl sm:text-2xl text-white">
+                Send Message <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400 ml-2">DIRECT</span>
+              </h3>
+            </div>
+            <p class="text-xs text-zinc-400 mb-6">
+              Your message connects directly to Madhanraj via WhatsApp or Email.
+            </p>
+
+            <form id="contactForm" onsubmit="handleBackendSubmit(event)" class="space-y-4">
+              <!-- Name Input -->
+              <div>
+                <input 
+                  type="text" 
+                  id="senderName" 
+                  required
+                  placeholder="Your Name *" 
+                  class="w-full px-5 py-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 transition-colors"
+                >
+              </div>
+
+              <!-- Email Input -->
+              <div>
+                <input 
+                  type="email" 
+                  id="senderEmail" 
+                  required
+                  placeholder="Your Email Address *" 
+                  class="w-full px-5 py-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 transition-colors"
+                >
+              </div>
+
+              <!-- Message Input -->
+              <div>
+                <textarea 
+                  id="senderMessage" 
+                  rows="4" 
+                  required
+                  placeholder="Write your message or project requirements... *" 
+                  class="w-full px-5 py-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Primary Submit Button -->
+              <div>
+                <button 
+                  type="submit" 
+                  id="contactSubmitBtn"
+                  class="w-full py-3.5 px-6 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-bold font-syne tracking-wider uppercase transition-all duration-300 shadow-xl shadow-blue-600/20 flex items-center justify-center gap-2 active:scale-98 disabled:opacity-50 disabled:pointer-events-none"
+                >
+                  <i class="fa-solid fa-paper-plane text-sm"></i>
+                  <span id="submitBtnText">SEND MESSAGE DIRECTLY</span>
+                </button>
+              </div>
+
+              <!-- Alternative Quick Actions -->
+              <div class="pt-2 border-t border-zinc-900/80">
+                <div class="flex items-center justify-between text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-2">
+                  <span>Or reach out immediately via:</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                  <button 
+                    type="button" 
+                    onclick="handleWhatsAppContact()"
+                    class="py-2.5 px-4 rounded-xl bg-zinc-900 hover:bg-zinc-850 hover:border-emerald-500/50 border border-zinc-800 text-zinc-300 hover:text-emerald-400 text-xs font-mono font-medium transition-all flex items-center justify-center gap-2 active:scale-98"
+                  >
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                    <span>WhatsApp</span>
+                  </button>
+                  <button 
+                    type="button" 
+                    onclick="handleEmailContact()"
+                    class="py-2.5 px-4 rounded-xl bg-zinc-900 hover:bg-zinc-850 hover:border-blue-500/50 border border-zinc-800 text-zinc-300 hover:text-blue-400 text-xs font-mono font-medium transition-all flex items-center justify-center gap-2 active:scale-98"
+                  >
+                    <i class="fa-regular fa-envelope text-blue-400"></i>
+                    <span>Gmail Web</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Status Indicator at Bottom -->
+            <div id="contactStatus" class="flex items-center gap-2 mt-5 text-zinc-400 text-xs font-mono">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Available in Bengaluru (IST Timezone)</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- 8. FOOTER SECTION                                              -->
+    <!-- ============================================================== -->
+    <footer class="py-16 px-4 sm:px-6 lg:px-8 border-t border-zinc-900 text-center relative z-10 bg-[#060608]">
+      
+      <!-- Follow Me Headline -->
+      <h3 class="text-sm font-mono tracking-[0.3em] font-bold text-zinc-300 uppercase mb-8">
+        CONNECT WITH ME
+      </h3>
+
+      <!-- Social Icons -->
+      <div class="inline-flex items-center gap-4 p-2 rounded-full bg-zinc-950 border border-zinc-800/80 mb-10 shadow-xl">
+        <a href="https://www.linkedin.com/in/madhanraj-v-589607375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800/60 flex items-center justify-center text-zinc-400 hover:text-blue-400 hover:border-blue-500/40 transition-all hover:scale-110" title="LinkedIn">
+          <i class="fa-brands fa-linkedin text-lg"></i>
+        </a>
+        <a href="https://github.com/madhanraj19vtm-ship-it" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800/60 flex items-center justify-center text-zinc-400 hover:text-white hover:border-zinc-500 transition-all hover:scale-110" title="GitHub Profile">
+          <i class="fa-brands fa-github text-lg"></i>
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=madhanraj19vtm@gmail.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800/60 flex items-center justify-center text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/40 transition-all hover:scale-110" title="Email via Gmail">
+          <i class="fa-solid fa-envelope text-lg"></i>
+        </a>
+        <a href="https://wa.me/919942155468" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800/60 flex items-center justify-center text-zinc-400 hover:text-green-400 hover:border-green-400/40 transition-all hover:scale-110" title="WhatsApp">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+        </a>
+      </div>
+
+      <!-- Copyright Notice -->
+      <p class="text-xs text-zinc-500 font-mono tracking-wider">
+        Copyright © 2026 All Rights Reserved | Created by <span class="text-zinc-300 font-bold">Madhanraj V</span>
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- 9. PROFILE & ABOUT ME MODAL / OVERLAY                          -->
+  <!-- ============================================================== -->
+  <div id="aboutModal" class="fixed inset-0 z-50 bg-[#08080a]/95 backdrop-blur-xl overflow-y-auto hidden opacity-0 transition-opacity duration-300 p-4 sm:p-6 lg:p-8 cursor-pointer" onclick="handleModalBackdropClick(event)">
+    <div class="max-w-3xl mx-auto min-h-full flex flex-col justify-between py-6 cursor-default" onclick="event.stopPropagation()">
+      
+      <!-- Top Bar: Back & Print Buttons -->
+      <div class="flex items-center justify-between mb-8">
+        <button onclick="toggleAboutModal(false)" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-xs font-mono tracking-wider shadow-lg">
+          <i class="fa-solid fa-arrow-left text-xs"></i>
+          <span>Back</span>
+        </button>
+
+        <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-xs font-mono">
+          <i class="fa-solid fa-print text-xs"></i>
+          <span>Print / Save PDF</span>
+        </button>
+      </div>
+
+      <!-- Profile Header Area -->
+      <div class="flex flex-col items-center text-center mb-8">
+        <div class="w-32 h-32 rounded-full overflow-hidden border-2 border-blue-500/50 shadow-2xl bg-zinc-900 mb-4 flex items-center justify-center text-blue-400">
+          <i class="fa-solid fa-laptop-code text-5xl"></i>
+        </div>
+        <p class="font-handwriting text-3xl font-bold text-zinc-100 tracking-wide">
+          Madhanraj V
+        </p>
+        <p class="text-xs font-mono text-blue-400 uppercase tracking-widest mt-1">
+          B.Tech CSE (AI &amp; ML) • Jain University (2025–2029) • <span class="text-emerald-400 font-bold">CGPA: 7.45</span>
+        </p>
+      </div>
+
+      <!-- "About Myself |" Heading -->
+      <div class="text-center mb-8">
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-syne text-white tracking-tight">
+          Profile &amp; Background <span class="text-blue-500">|</span>
+        </h2>
+      </div>
+
+      <!-- Profile Content from Resume -->
+      <div class="space-y-5 text-sm sm:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto text-left sm:text-justify mb-10">
+        <p>
+          I am a Computer Science (AI &amp; ML) student at Jain University (2025 – 2029) with a current academic standing of <strong class="text-emerald-400">CGPA 7.45</strong>, possessing a genuine interest in building software and solving real problems through code.
+        </p>
+
+        <p>
+          Among my recent work, I built the <strong>Students Depression Calculator</strong> — an analytical web application that evaluates student stress and mental wellness risk scores by evaluating lifestyle factors, academic demands, and sleep patterns through structured algorithms.
+        </p>
+
+        <p>
+          I am comfortable working with Java and Python, with a constantly growing understanding of object-oriented concepts and everyday programming logic. I enjoy picking up new tools and languages quickly, and am always looking for ways to write cleaner, more efficient code through regular practice.
+        </p>
+
+        <p>
+          As part of my coursework and projects, I have developed a strong foundation in OOP principles — classes, objects, inheritance, constructors, encapsulation — as demonstrated in my Course Registration System project.
+        </p>
+
+        <p>
+          My technical journey also includes practical experience in algorithmic problem-solving with arrays, strings, loops, writing modular code to minimize redundancy, exploring exception handling to handle edge cases gracefully, and following consistent naming and code formatting conventions.
+        </p>
+
+        <p class="text-zinc-200 font-medium">
+          Located in Bengaluru, Karnataka, India. Fluent in English and Tamil.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center justify-center gap-4 pb-8 flex-wrap">
+        <a 
+          href="#contact" 
+          onclick="toggleAboutModal(false)"
+          class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-zinc-100 hover:bg-white text-zinc-950 font-bold font-syne text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-2xl hover:scale-105"
+        >
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span>Get in Touch</span>
+        </a>
+        <button 
+          onclick="toggleAboutModal(false)"
+          class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold font-syne text-xs sm:text-sm tracking-wider uppercase transition-all"
+        >
+          <span>Close</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 10. STUDENTS DEPRESSION CALCULATOR MODAL (INTERACTIVE DEMO)     -->
+  <!-- ============================================================== -->
+  <div id="calculatorModal" class="fixed inset-0 z-50 bg-[#08080a]/95 backdrop-blur-xl overflow-y-auto hidden opacity-0 transition-opacity duration-300 p-4 sm:p-6 lg:p-8 cursor-pointer" onclick="handleCalculatorBackdropClick(event)">
+    <div class="max-w-2xl mx-auto min-h-full flex flex-col justify-between py-6 cursor-default" onclick="event.stopPropagation()">
+      
+      <!-- Top Bar -->
+      <div class="flex items-center justify-between mb-6">
+        <button onclick="toggleCalculatorModal(false)" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-xs font-mono tracking-wider shadow-lg">
+          <i class="fa-solid fa-arrow-left text-xs"></i>
+          <span>Back</span>
+        </button>
+
+        <span class="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400">
+          STUDENT WELLNESS LAB
+        </span>
+      </div>
+
+      <!-- Modal Header -->
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-500 p-0.5 mx-auto mb-3 shadow-xl">
+          <div class="w-full h-full bg-zinc-950 rounded-[14px] flex items-center justify-center">
+            <i class="fa-solid fa-heart-pulse text-2xl text-blue-400"></i>
+          </div>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold font-syne text-white tracking-tight">
+          Students Depression Calculator
+        </h3>
+        <p class="text-xs sm:text-sm text-zinc-400 mt-1 max-w-md mx-auto">
+          Interactive demonstration of Madhanraj's predictive scoring model assessing student mental workload and wellness balance.
+        </p>
+      </div>
+
+      <!-- Interactive Calculator Form -->
+      <div class="bg-zinc-950/80 border border-zinc-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+        <form id="depressionCalcForm" onsubmit="calculateDepressionScore(event)" class="space-y-4">
+          
+          <!-- Metric 1: Academic Pressure -->
+          <div>
+            <label class="block text-xs font-mono text-zinc-300 mb-1.5 flex justify-between">
+              <span>Academic Pressure (1 = Low, 5 = Intense):</span>
+              <span id="pressureVal" class="text-blue-400 font-bold">3</span>
+            </label>
+            <input type="range" id="academicPressure" min="1" max="5" value="3" oninput="document.getElementById('pressureVal').textContent = this.value" class="w-full accent-blue-500 bg-zinc-800 rounded-lg cursor-pointer">
+          </div>
+
+          <!-- Metric 2: Sleep Duration -->
+          <div>
+            <label class="block text-xs font-mono text-zinc-300 mb-1.5 flex justify-between">
+              <span>Daily Sleep Duration (Hours):</span>
+              <span id="sleepVal" class="text-blue-400 font-bold">6 hrs</span>
+            </label>
+            <input type="range" id="sleepHours" min="3" max="10" value="6" oninput="document.getElementById('sleepVal').textContent = this.value + ' hrs'" class="w-full accent-blue-500 bg-zinc-800 rounded-lg cursor-pointer">
+          </div>
+
+          <!-- Metric 3: Study Workload -->
+          <div>
+            <label class="block text-xs font-mono text-zinc-300 mb-1.5 flex justify-between">
+              <span>Study Hours per Day:</span>
+              <span id="studyVal" class="text-blue-400 font-bold">5 hrs</span>
+            </label>
+            <input type="range" id="studyHours" min="1" max="12" value="5" oninput="document.getElementById('studyVal').textContent = this.value + ' hrs'" class="w-full accent-blue-500 bg-zinc-800 rounded-lg cursor-pointer">
+          </div>
+
+          <!-- Metric 4: Lifestyle & Extracurricular Satisfaction -->
+          <div>
+            <label class="block text-xs font-mono text-zinc-300 mb-1.5 flex justify-between">
+              <span>Lifestyle Balance &amp; Physical Activity (1 = None, 5 = High):</span>
+              <span id="activityVal" class="text-blue-400 font-bold">3</span>
+            </label>
+            <input type="range" id="activityLevel" min="1" max="5" value="3" oninput="document.getElementById('activityVal').textContent = this.value" class="w-full accent-blue-500 bg-zinc-800 rounded-lg cursor-pointer">
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold font-syne text-xs uppercase tracking-wider transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+            <i class="fa-solid fa-chart-pie text-xs"></i>
+            <span>Calculate Mental Health Index</span>
+          </button>
+        </form>
+
+        <!-- Result Box -->
+        <div id="calcResultBox" class="hidden mt-4 p-5 rounded-2xl bg-zinc-900/90 border border-zinc-700/80 transition-all">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono text-zinc-400">ASSESSMENT RESULT</span>
+            <span id="resultBadge" class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Low Risk</span>
+          </div>
+          <div class="text-lg font-bold font-syne text-white" id="resultScoreText">Wellness Score: 78/100</div>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed" id="resultAdvice">
+            Healthy stress levels detected. Maintain adequate sleep cycles and modular study intervals.
+          </p>
+        </div>
+      </div>
+
+      <!-- Close Button -->
+      <div class="text-center pt-6">
+        <button onclick="toggleCalculatorModal(false)" class="px-8 py-2.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-bold font-syne text-xs uppercase tracking-wider">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button 
+    id="backToTopBtn" 
+    onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" 
+    class="fixed bottom-6 right-6 z-30 w-11 h-11 rounded-full bg-zinc-900/90 border border-zinc-700 text-zinc-300 hover:text-white hover:border-blue-500 flex items-center justify-center shadow-2xl transition-all duration-300 opacity-0 pointer-events-none hover:scale-110"
+    aria-label="Back to top"
+  >
+    <i class="fa-solid fa-arrow-up text-xs"></i>
+  </button>
+
+  <!-- ============================================================== -->
+  <!-- JAVASCRIPT CONTROLLERS                                         -->
+  <!-- ============================================================== -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. Live Digital Clock
+    // -------------------------------------------------------------
+    function updateClock() {
+      const clockElement = document.getElementById('liveClock');
+      if (!clockElement) return;
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      const minutesStr = minutes < 10 ? '0' + minutes : minutes;
+      clockElement.textContent = `${hours}:${minutesStr} ${ampm}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // -------------------------------------------------------------
+    // 2. Intro Splash Screen Dismissal
+    // -------------------------------------------------------------
+    let splashTimer = null;
+
+    function dismissSplash() {
+      if (splashTimer) {
+        clearTimeout(splashTimer);
+        splashTimer = null;
+      }
+      const splash = document.getElementById('splashScreen');
+      if (!splash || splash.style.display === 'none') return;
+      splash.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
+      splash.style.pointerEvents = 'none';
+      setTimeout(() => {
+        splash.style.display = 'none';
+      }, 500);
+    }
+    window.dismissSplash = dismissSplash;
+
+    // Auto-dismiss after 2.5s
+    splashTimer = setTimeout(dismissSplash, 2500);
+
+    // -------------------------------------------------------------
+    // 3. Mobile Navigation Drawer Toggle
+    // -------------------------------------------------------------
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+
+    function toggleMobileNav() {
+      if (!mobileNavDrawer) return;
+      mobileNavDrawer.classList.toggle('hidden');
+    }
+    if (mobileNavToggle) {
+      mobileNavToggle.addEventListener('click', toggleMobileNav);
+    }
+
+    // -------------------------------------------------------------
+    // 4. Lanyard Badge Toggle, 3D Flip Mechanics & Reactive Physics
+    // -------------------------------------------------------------
+    const toggleLanyardBtn = document.getElementById('toggleLanyardBtn');
+    const lanyardContainer = document.getElementById('lanyardContainer');
+    const lanyardPlaceholder = document.getElementById('lanyardPlaceholder');
+    const cardBtnText = document.getElementById('cardBtnText');
+    const lanyardAssembly = document.getElementById('lanyardAssembly');
+    const lanyardCard = document.getElementById('lanyardCard');
+    const lanyardCardInner = document.getElementById('lanyardCardInner');
+
+    let isCardVisible = true;
+    let isFlipped = false;
+
+    function triggerShowLanyard() {
+      isCardVisible = true;
+      if (lanyardContainer) {
+        lanyardContainer.classList.remove('-translate-y-96', 'opacity-0', 'pointer-events-none', 'scale-90');
+        lanyardContainer.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto', 'scale-100');
+      }
+      if (lanyardPlaceholder) lanyardPlaceholder.classList.add('hidden');
+      if (cardBtnText) cardBtnText.textContent = 'HIDE ID PASS';
+    }
+
+    function triggerHideLanyard() {
+      isCardVisible = false;
+      if (lanyardContainer) {
+        lanyardContainer.classList.add('-translate-y-96', 'opacity-0', 'pointer-events-none', 'scale-90');
+        lanyardContainer.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto', 'scale-100');
+      }
+      if (lanyardPlaceholder) lanyardPlaceholder.classList.remove('hidden');
+      if (cardBtnText) cardBtnText.textContent = 'SHOW ID PASS';
+    }
+
+    if (toggleLanyardBtn) {
+      toggleLanyardBtn.addEventListener('click', () => {
+        if (!isCardVisible) {
+          triggerShowLanyard();
+        } else {
+          triggerHideLanyard();
+        }
+      });
+    }
+
+    function flipLanyardCard() {
+      if (!lanyardCardInner) return;
+      isFlipped = !isFlipped;
+      // Dynamic physical impulse on flip
+      swingVelocity += (isFlipped ? 5 : -5);
+    }
+
+    // -------------------------------------------------------------
+    // Reactive Pendulum & Cursor Physics (Rope + Badge Assembly)
+    // -------------------------------------------------------------
+    let targetSwingAngle = 0;
+    let currentSwingAngle = 0;
+    let swingVelocity = 0;
+
+    let targetCardLag = 0;
+    let currentCardLag = 0;
+
+    let targetTiltY = 0;
+    let currentTiltY = 0;
+    let targetTiltX = 0;
+    let currentTiltX = 0;
+
+    let isDragging = false;
+
+    // Fluid, silky pendulum physics: only activates near or on the card, swings smoothly
+    function handleCursorMove(clientX, clientY) {
+      if (!isCardVisible || !lanyardCard || !lanyardAssembly) return;
+
+      const rect = lanyardCard.getBoundingClientRect();
+
+      if (isDragging) {
+        const anchorX = rect.left + rect.width / 2;
+        const anchorY = rect.top - 160;
+        const dx = clientX - anchorX;
+        const dy = clientY - anchorY;
+        const rad = Math.atan2(dx, Math.max(dy, 40));
+        targetSwingAngle = Math.max(-18, Math.min(18, rad * (180 / Math.PI) * 0.45));
+        targetCardLag = targetSwingAngle * 0.35;
+        targetTiltY = (dx / 150) * 14;
+        targetTiltX = -(dy / 150) * 10;
+        return;
+      }
+
+      // Distance from cursor to card center
+      const cardCenterX = rect.left + rect.width / 2;
+      const cardCenterY = rect.top + rect.height / 2;
+
+      const dx = clientX - cardCenterX;
+      const dy = clientY - cardCenterY;
+      const dist = Math.hypot(dx, dy);
+
+      // Active interactive aura around card
+      const activeRadius = 240;
+
+      if (dist < activeRadius) {
+        // Smoothstep falloff for a buttery, organic response
+        const t = 1 - (dist / activeRadius);
+        const proximity = t * t * (3 - 2 * t);
+
+        const normX = Math.max(-1.4, Math.min(1.4, dx / (rect.width / 2)));
+        const normY = Math.max(-1.4, Math.min(1.4, dy / (rect.height / 2)));
+
+        // Silky, natural swing range (±13° max)
+        targetSwingAngle = normX * 13 * proximity;
+        targetCardLag = normX * 4 * proximity;
+
+        // Smooth 3D tilt facing cursor
+        targetTiltY = normX * 14 * proximity;
+        targetTiltX = -normY * 9 * proximity;
+      } else {
+        // Outside near zone: smoothly return to normal vertical hanging rest
+        targetSwingAngle = 0;
+        targetCardLag = 0;
+        targetTiltY = 0;
+        targetTiltX = 0;
+      }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      handleCursorMove(e.clientX, e.clientY);
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        handleCursorMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      // Relax targets to 0 when cursor exits page
+      targetSwingAngle = 0;
+      targetCardLag = 0;
+      targetTiltY = 0;
+      targetTiltX = 0;
+    });
+
+    // Click & Drag physics interaction on badge
+    if (lanyardCard) {
+      lanyardCard.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        lanyardCard.setPointerCapture(e.pointerId);
+      });
+
+      lanyardCard.addEventListener('pointerup', (e) => {
+        if (isDragging) {
+          isDragging = false;
+          // Fluid inertia kick on release
+          swingVelocity = targetSwingAngle * 0.18;
+          try { lanyardCard.releasePointerCapture(e.pointerId); } catch(_) {}
+        }
+      });
+
+      lanyardCard.addEventListener('pointercancel', () => {
+        isDragging = false;
+      });
+    }
+
+    // Buttery, fluid pendulum physics loop with natural momentum
+    function updateLanyardPhysics() {
+      if (isCardVisible && lanyardAssembly) {
+        if (isDragging) {
+          currentSwingAngle += (targetSwingAngle - currentSwingAngle) * 0.25;
+          swingVelocity = 0;
+        } else {
+          // Gentle spring tension + silky fluid damping (free-swinging momentum)
+          const springK = 0.042;
+          const damping = 0.948;
+          const force = (targetSwingAngle - currentSwingAngle) * springK;
+          swingVelocity = (swingVelocity + force) * damping;
+          currentSwingAngle += swingVelocity;
+
+          // Settle cleanly to exact 0 when velocity decays
+          if (targetSwingAngle === 0 && Math.abs(currentSwingAngle) < 0.03 && Math.abs(swingVelocity) < 0.01) {
+            currentSwingAngle = 0;
+            swingVelocity = 0;
+          }
+        }
+
+        // Silky smooth interpolation for card lag & 3D tilt
+        currentCardLag += (targetCardLag - currentCardLag) * 0.09;
+        currentTiltY += (targetTiltY - currentTiltY) * 0.09;
+        currentTiltX += (targetTiltX - currentTiltX) * 0.09;
+
+        if (targetTiltY === 0 && Math.abs(currentTiltY) < 0.03) currentTiltY = 0;
+        if (targetTiltX === 0 && Math.abs(currentTiltX) < 0.03) currentTiltX = 0;
+
+        // Apply physical rotation to the whole lanyard assembly (rope & badge)
+        lanyardAssembly.style.transformOrigin = '50% 0%';
+        lanyardAssembly.style.transform = `rotateZ(${currentSwingAngle}deg)`;
+
+        // Secondary subtle card flex from the clip
+        if (lanyardCard) {
+          lanyardCard.style.transformOrigin = '50% 0%';
+          lanyardCard.style.transform = `rotateZ(${currentCardLag}deg)`;
+        }
+
+        // 3D face tilt and flip
+        if (lanyardCardInner) {
+          const baseFlip = isFlipped ? 180 : 0;
+          lanyardCardInner.style.transform = `rotateY(${baseFlip + currentTiltY}deg) rotateX(${currentTiltX}deg)`;
+        }
+      }
+      requestAnimationFrame(updateLanyardPhysics);
+    }
+    requestAnimationFrame(updateLanyardPhysics);
+
+    // -------------------------------------------------------------
+    // 5. Showcase Tabs Switching
+    // -------------------------------------------------------------
+    function switchTab(tabKey) {
+      const tabs = ['projects', 'education', 'techstack'];
+      
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`content-${t}`);
+        if (!btn || !content) return;
+
+        if (t === tabKey) {
+          btn.classList.add('bg-zinc-100', 'text-zinc-900', 'shadow-md');
+          btn.classList.remove('text-zinc-400');
+          content.classList.remove('hidden');
+        } else {
+          btn.classList.remove('bg-zinc-100', 'text-zinc-900', 'shadow-md');
+          btn.classList.add('text-zinc-400');
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // 6. Profile Modal Controller
+    // -------------------------------------------------------------
+    const aboutModal = document.getElementById('aboutModal');
+
+    function toggleAboutModal(show) {
+      if (!aboutModal) return;
+      if (show) {
+        aboutModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        setTimeout(() => {
+          aboutModal.classList.remove('opacity-0');
+        }, 10);
+      } else {
+        aboutModal.classList.add('opacity-0');
+        setTimeout(() => {
+          aboutModal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }, 300);
+      }
+    }
+
+    function handleModalBackdropClick(event) {
+      if (event.target === aboutModal) {
+        toggleAboutModal(false);
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!aboutModal.classList.contains('hidden')) toggleAboutModal(false);
+        const calcModal = document.getElementById('calculatorModal');
+        if (calcModal && !calcModal.classList.contains('hidden')) toggleCalculatorModal(false);
+      }
+    });
+
+    // -------------------------------------------------------------
+    // 6.2 Students Depression Calculator Interactive Controller
+    // -------------------------------------------------------------
+    const calculatorModal = document.getElementById('calculatorModal');
+
+    function toggleCalculatorModal(show) {
+      if (!calculatorModal) return;
+      if (show) {
+        calculatorModal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+        setTimeout(() => {
+          calculatorModal.classList.remove('opacity-0');
+        }, 10);
+      } else {
+        calculatorModal.classList.add('opacity-0');
+        setTimeout(() => {
+          calculatorModal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }, 300);
+      }
+    }
+
+    function handleCalculatorBackdropClick(event) {
+      if (event.target === calculatorModal) {
+        toggleCalculatorModal(false);
+      }
+    }
+
+    function calculateDepressionScore(event) {
+      event.preventDefault();
+      const pressure = parseInt(document.getElementById('academicPressure').value, 10); // 1-5
+      const sleep = parseInt(document.getElementById('sleepHours').value, 10); // 3-10
+      const study = parseInt(document.getElementById('studyHours').value, 10); // 1-12
+      const activity = parseInt(document.getElementById('activityLevel').value, 10); // 1-5
+
+      // Algorithm: stress factor based on study & pressure vs sleep & activity
+      let stressFactor = (pressure * 14) + (study * 4) - (sleep * 6) - (activity * 8);
+      // Normalized to 0 - 100
+      let riskScore = Math.max(5, Math.min(95, Math.round(stressFactor + 35)));
+      let wellnessIndex = 100 - riskScore;
+
+      const resultBox = document.getElementById('calcResultBox');
+      const resultBadge = document.getElementById('resultBadge');
+      const scoreText = document.getElementById('resultScoreText');
+      const adviceText = document.getElementById('resultAdvice');
+
+      resultBox.classList.remove('hidden');
+
+      if (riskScore < 35) {
+        resultBadge.className = "text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+        resultBadge.textContent = "Low Risk / Optimal";
+        scoreText.textContent = `Wellness Index: ${wellnessIndex}/100 (Risk: Low)`;
+        adviceText.textContent = "Great balance detected! Your sleep duration and activity level effectively offset academic pressures.";
+      } else if (riskScore < 65) {
+        resultBadge.className = "text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30";
+        resultBadge.textContent = "Moderate Risk";
+        scoreText.textContent = `Wellness Index: ${wellnessIndex}/100 (Risk: Moderate)`;
+        adviceText.textContent = "Moderate stress indicators observed. Recommend increasing sleep to at least 7.5 hours and incorporating active mental breaks between coding sessions.";
+      } else {
+        resultBadge.className = "text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30";
+        resultBadge.textContent = "High Stress Indicator";
+        scoreText.textContent = `Wellness Index: ${wellnessIndex}/100 (Elevated Stress)`;
+        adviceText.textContent = "Elevated cognitive strain detected. Consider scheduling structured downtime, regular exercise, and talking with campus wellness mentors.";
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 7. Direct Contact Form Handlers (WhatsApp & Email)
+    // -------------------------------------------------------------
+    async function handleBackendSubmit(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('senderName');
+      const emailInput = document.getElementById('senderEmail');
+      const msgInput = document.getElementById('senderMessage');
+      const btn = document.getElementById('contactSubmitBtn');
+      const btnText = document.getElementById('submitBtnText');
+      const statusEl = document.getElementById('contactStatus');
+
+      const name = nameInput.value.trim();
+      const email = emailInput ? emailInput.value.trim() : '';
+      const message = msgInput.value.trim();
+
+      if (!name || !message) {
+        if (statusEl) {
+          statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-400"></span><span class="text-red-400">Please fill in your name and message.</span>`;
+        }
+        return;
+      }
+
+      // UI Loading state
+      btn.disabled = true;
+      btnText.textContent = 'TRANSMITTING MESSAGE...';
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span><span class="text-blue-400">Connecting to server API...</span>`;
+      }
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          if (statusEl) {
+            statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span class="text-emerald-400 font-bold">✓ ${data.message || "Message received! Madhanraj will reply shortly."}</span>`;
+          }
+          btnText.textContent = '✓ SENT SUCCESSFULLY';
+          btn.classList.remove('bg-blue-600', 'hover:bg-blue-500');
+          btn.classList.add('bg-emerald-600');
+
+          // Reset inputs
+          nameInput.value = '';
+          if (emailInput) emailInput.value = '';
+          msgInput.value = '';
+
+          setTimeout(() => {
+            btn.disabled = false;
+            btnText.textContent = 'SEND MESSAGE DIRECTLY';
+            btn.classList.remove('bg-emerald-600');
+            btn.classList.add('bg-blue-600', 'hover:bg-blue-500');
+          }, 4500);
+        } else {
+          throw new Error(data.error || 'Server processing error');
+        }
+      } catch (err) {
+        console.warn('Backend API submission warning:', err);
+        if (statusEl) {
+          statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400"></span><span class="text-amber-400">Message logged locally. You can also connect directly via WhatsApp or Gmail below.</span>`;
+        }
+        btn.disabled = false;
+        btnText.textContent = 'RETRY SENDING';
+      }
+    }
+
+    function handleWhatsAppContact() {
+      const name = document.getElementById('senderName').value.trim();
+      const msg = document.getElementById('senderMessage').value.trim();
+      const phoneNumber = '919942155468';
+      const formattedText = `Hi Madhanraj, I am ${name || 'Visitor'}.\n\n${msg || 'I am interested in connecting with you.'}`;
+      const encodedText = encodeURIComponent(formattedText);
+      const url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+      const statusEl = document.getElementById('contactStatus');
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span class="text-emerald-400">Opening WhatsApp chat...</span>`;
+      }
+      window.open(url, '_blank');
+    }
+
+    function handleEmailContact() {
+      const name = document.getElementById('senderName').value.trim();
+      const msg = document.getElementById('senderMessage').value.trim();
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name || 'Visitor'}`);
+      const body = encodeURIComponent(`Hi Madhanraj,\n\n${msg || 'I am interested in connecting with you.'}\n\nFrom,\n${name || 'Visitor'}`);
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=madhanraj19vtm@gmail.com&su=${subject}&body=${body}`;
+
+      const statusEl = document.getElementById('contactStatus');
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span><span class="text-blue-400">Opening email in Gmail...</span>`;
+      }
+      window.open(gmailUrl, '_blank');
+    }
+
+    // -------------------------------------------------------------
+    // 8. Scroll Spy & Floating Back To Top Button
+    // -------------------------------------------------------------
+    const backToTopBtn = document.getElementById('backToTopBtn');
+
+    window.addEventListener('scroll', () => {
+      if (!backToTopBtn) return;
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+        backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+        backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+    });
+  </script>
+</body>
+</html>

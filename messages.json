@@ -1,0 +1,32 @@
+[
+  {
+    "id": 3,
+    "timestamp": "2026-11-06 01:35:24",
+    "name": "Sarah Jenkins (Recruiter)",
+    "email": "s.jenkins@innovate-ai.com",
+    "message": "Hi Madhanraj, loved your Students Depression Calculator project. Are you available for a summer 2026 AI internship?",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Python-urllib/3.12",
+    "status": "unread"
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-11-06 01:32:12",
+    "name": "Google DeepMind Recruiter",
+    "email": "recruiting@deepmind.google",
+    "message": "Hello Madhanraj, we are impressed by your brutalist portfolio and AI/ML work at Jain University!",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Python-urllib/3.12",
+    "status": "unread"
+  },
+  {
+    "id": 1,
+    "timestamp": "2026-11-06 01:26:04",
+    "name": "Priya Sharma (Recruiter)",
+    "email": "priya.sharma@techventures.ai",
+    "message": "Hi Madhanraj, we reviewed your AI & ML projects and would love to discuss an internship opportunity!",
+    "ip_address": "127.0.0.1",
+    "user_agent": "Python-urllib/3.12",
+    "status": "unread"
+  }
+]
