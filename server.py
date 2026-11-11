@@ -230,7 +230,7 @@ class PortfolioRequestHandler(SimpleHTTPRequestHandler):
             cards_html = """
             <div class="p-12 text-center text-zinc-500 border border-zinc-800/80 rounded-2xl bg-zinc-900/30">
               <i class="fa-regular fa-folder-open text-4xl mb-3 text-zinc-600 block"></i>
-              <p class="font-mono text-sm">No contact messages received yet.</p>
+              <p class="font-mono text-sm">No contact messages stored yet.</p>
               <p class="text-xs text-zinc-600 mt-1">When someone submits your portfolio contact form, their message will appear here.</p>
             </div>
             """
@@ -305,35 +305,113 @@ class PortfolioRequestHandler(SimpleHTTPRequestHandler):
         <a href="/" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-white hover:border-zinc-600 transition-all">
           <i class="fa-solid fa-arrow-left mr-1.5"></i> Back to Portfolio
         </a>
-        <a href="/api/messages" target="_blank" class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-white hover:border-zinc-600 transition-all">
-          <i class="fa-solid fa-code mr-1.5"></i> Raw JSON API
-        </a>
+        <button id="lockBtn" onclick="logoutAdmin()" class="hidden px-4 py-2 rounded-xl bg-red-950/40 border border-red-800/60 text-xs font-mono text-red-300 hover:text-white transition-all">
+          <i class="fa-solid fa-lock mr-1.5"></i> Lock Console
+        </button>
       </div>
     </div>
 
-    <!-- Stats Bar -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
-        <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider block mb-1">Total Submissions</span>
-        <span class="text-2xl font-bold font-syne text-white">{total_count}</span>
+    <!-- Login Gate -->
+    <div id="loginGate" class="max-w-md mx-auto my-12 p-8 rounded-3xl bg-zinc-950 border border-zinc-800 shadow-2xl text-center">
+      <div class="w-14 h-14 rounded-2xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center text-xl mx-auto mb-4">
+        <i class="fa-solid fa-shield-halved"></i>
       </div>
-      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
-        <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider block mb-1">Database Engine</span>
-        <span class="text-lg font-bold font-mono text-emerald-400">SQLite3</span>
+      <h2 class="font-syne font-bold text-xl text-white mb-1">Admin Verification</h2>
+      <p class="text-xs text-zinc-400 mb-6">Enter demo credentials to unlock the messages inbox.</p>
+
+      <div class="mb-5 p-3.5 rounded-2xl bg-blue-950/30 border border-blue-800/50 text-left">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-mono font-bold uppercase text-blue-400">DEMO CREDENTIALS</span>
+          <button type="button" onclick="fillDemo()" class="px-2 py-0.5 rounded bg-blue-600 text-white text-[10px] font-mono font-bold uppercase">AUTO FILL</button>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-xs font-mono text-zinc-300">
+          <div class="bg-zinc-900 px-2.5 py-1 rounded-lg">User: <span class="text-emerald-400 font-bold">admin</span></div>
+          <div class="bg-zinc-900 px-2.5 py-1 rounded-lg">Pass: <span class="text-emerald-400 font-bold">admin123</span></div>
+        </div>
       </div>
-      <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
-        <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider block mb-1">Receiver</span>
-        <span class="text-sm font-bold font-mono text-blue-400 truncate block">madhanraj19vtm@gmail.com</span>
-      </div>
+
+      <form onsubmit="handleLogin(event)" class="space-y-3.5 text-left">
+        <div>
+          <label class="block text-[11px] font-mono text-zinc-400 mb-1">Username</label>
+          <input type="text" id="userInput" required placeholder="admin" class="w-full px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-white focus:outline-none focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-zinc-400 mb-1">Password</label>
+          <input type="password" id="passInput" required placeholder="admin123" class="w-full px-4 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-white focus:outline-none focus:border-blue-500">
+        </div>
+        <div id="loginErr" class="hidden text-xs font-mono text-red-400 bg-red-950/40 p-2.5 rounded-xl border border-red-800/60 text-center">Invalid credentials.</div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold font-syne uppercase tracking-wider transition-all">Unlock Messages</button>
+      </form>
     </div>
 
-    <!-- Messages List -->
-    <div class="space-y-4">
-      {cards_html}
+    <!-- Authenticated Messages View -->
+    <div id="authView" class="hidden">
+      <!-- Stats Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
+          <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider block mb-1">Total Submissions</span>
+          <span class="text-2xl font-bold font-syne text-white">{total_count}</span>
+        </div>
+        <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
+          <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider block mb-1">Database Engine</span>
+          <span class="text-lg font-bold font-mono text-emerald-400">SQLite3</span>
+        </div>
+        <div class="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
+          <span class="text-xs font-mono text-zinc-500 uppercase tracking-wider block mb-1">Receiver</span>
+          <span class="text-sm font-bold font-mono text-blue-400 truncate block">madhanraj19vtm@gmail.com</span>
+        </div>
+      </div>
+
+      <!-- Messages List -->
+      <div class="space-y-4">
+        {cards_html}
+      </div>
     </div>
   </div>
 
   <script>
+    function fillDemo() {{
+      document.getElementById('userInput').value = 'admin';
+      document.getElementById('passInput').value = 'admin123';
+      document.getElementById('loginErr').classList.add('hidden');
+    }}
+
+    function handleLogin(e) {{
+      e.preventDefault();
+      const u = document.getElementById('userInput').value.trim().toLowerCase();
+      const p = document.getElementById('passInput').value.trim();
+      if (u === 'admin' && (p === 'admin123' || p === 'madhanraj@2026')) {{
+        sessionStorage.setItem('admin_auth', 'true');
+        applyAuth(true);
+      }} else {{
+        document.getElementById('loginErr').classList.remove('hidden');
+      }}
+    }}
+
+    function logoutAdmin() {{
+      sessionStorage.removeItem('admin_auth');
+      applyAuth(false);
+    }}
+
+    function applyAuth(isAuthed) {{
+      const gate = document.getElementById('loginGate');
+      const view = document.getElementById('authView');
+      const lockBtn = document.getElementById('lockBtn');
+      if (isAuthed) {{
+        gate.classList.add('hidden');
+        view.classList.remove('hidden');
+        lockBtn.classList.remove('hidden');
+      }} else {{
+        gate.classList.remove('hidden');
+        view.classList.add('hidden');
+        lockBtn.classList.add('hidden');
+      }}
+    }}
+
+    document.addEventListener('DOMContentLoaded', () => {{
+      applyAuth(sessionStorage.getItem('admin_auth') === 'true');
+    }});
+
     async function deleteMessage(id) {{
       if (!confirm('Are you sure you want to delete message #' + id + '?')) return;
       try {{
@@ -366,8 +444,6 @@ class PortfolioRequestHandler(SimpleHTTPRequestHandler):
         self.send_header("Content-Length", str(len(encoded)))
         self.end_headers()
         self.wfile.write(encoded)
-
-
 def html_escape(text):
     if text is None:
         return ""
